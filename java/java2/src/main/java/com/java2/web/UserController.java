@@ -43,4 +43,16 @@ public class UserController {
 	public List<User> createAllUser(@RequestBody List<User> users){
 		return userService.createAllUser(users);
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@ResponseBody
+	public User removeUser(@RequestParam long id){
+		return userService.removeUser(id);
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.PATCH)
+	@ResponseBody
+	public User refreshUser(@RequestParam long id, @RequestBody User user){
+		return userService.refreshUser(id, user);
+	}
 }

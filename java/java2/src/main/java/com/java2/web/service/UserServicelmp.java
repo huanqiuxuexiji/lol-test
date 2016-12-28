@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java2.web.dto.User;
-import com.java2.web.repository.UserRepositorylmp;
+import com.java2.web.repository.UserRepository;
 
 @Service
 public class UserServicelmp implements UserService {
 	
 	@Autowired
-	private UserRepositorylmp userRepository;
+	private UserRepository userRepository;
 	
 	public User getUser(long id){
 		return userRepository.findOne(id);
@@ -37,7 +37,15 @@ public class UserServicelmp implements UserService {
 	}
 
 	public List<User> createAllUser(List<User> users){
-		return userRepository.save(users);
+		return userRepository.saveall(users);
+	}
+	
+	public User removeUser(long id){
+		return userRepository.delete(id);
+	}
+	
+	public User refreshUser(long id, User user){
+		return userRepository.update(id, user);
 	}
 
 

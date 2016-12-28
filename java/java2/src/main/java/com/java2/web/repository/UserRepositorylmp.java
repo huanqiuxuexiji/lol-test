@@ -24,7 +24,7 @@ public class UserRepositorylmp implements UserRepository{
 	}
 	
 	
-	public List<User> save(List<User> users){	
+	public List<User> saveall(List<User> users){	
 		manager.persist(users);				
 		return users;
 	}
@@ -38,5 +38,21 @@ public class UserRepositorylmp implements UserRepository{
 	public List<User> findAll(){
 		return manager.createQuery("from User").getResultList();
 	}
-
+	
+	public User delete(long id){
+		User user = manager.find(User.class, id);		
+		manager.remove(user);
+		
+		return user;
+	}
+	
+	public User update(long id, User user){
+		User user1 = manager.find(User.class, id);
+		user1.setId(user.getId());
+		user1.setName(user.getName());
+		user1.setAddress(user.getAddress());
+		manager.merge(user1);
+		
+		return user1;
+	}
 }

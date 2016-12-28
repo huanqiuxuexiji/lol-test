@@ -8,10 +8,14 @@ public interface UserRepository {
 	
 	public User save(User user);
 	
-	public List<User> save(List<User> users);
+	public List<User> saveall(List<User> users);
 	
 	public User findOne(long id);
 	
 	public List<User> findAll();
+	
+	public User delete(long id);
+	
+	public User update(long id, User user);
 
 }

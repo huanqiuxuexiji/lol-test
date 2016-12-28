@@ -14,6 +14,8 @@ public interface UserService {
 
 	public List<User> createAllUser(List<User> users);
 	
+	public User removeUser(long id);
 	
+	public User refreshUser(long id, User user);
 	
 }
